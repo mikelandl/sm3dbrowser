@@ -1,6 +1,6 @@
 class DBConnections():
 	"""List of 'DBConnection' objects"""
-	
+
 	def __init__(self):
 		"""Initialize attributes"""
 		self.connections = []
@@ -11,4 +11,3 @@ class DBConnections():
 		self.connections=dbCursor.fetchall()
 		for connection in self.connections:
 			print(connection)
-		

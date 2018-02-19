@@ -22,3 +22,5 @@ class DBConnection():
 
         dbCursor.execute(sql, parameters)
         dbConnection.commit()
+
+    
