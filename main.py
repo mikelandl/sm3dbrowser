@@ -1,6 +1,10 @@
 from dbconnection import DBConnection
 from dbconnections import DBConnections
+<<<<<<< HEAD
 from sqlitequery import SqliteQuery
+=======
+from query import Query
+>>>>>>> c3ecfc35c12d56764235d539cc22ac33fc47120a
 from excel import Excel
 #from pypika import Query, Table, Field
 
@@ -27,7 +31,11 @@ with sqlite3.connect(dbFile) as dbConn:
 #c.loadConnections(cursor)
 
 #create test query
+<<<<<<< HEAD
 q = SqliteQuery(dbConn, cursor)
+=======
+q = Query(dbConn, cursor)
+>>>>>>> c3ecfc35c12d56764235d539cc22ac33fc47120a
 #q.addQuery('select count(*) from queries', 'Mike', 3.4)
 results = q.searchQuery('queries')
 
