@@ -1,11 +1,18 @@
-class SqliteQuery():
+import sqlite3
 
-    """SQLite query class"""
+class SqliteConnection():
 
-    def __init__(self, dbConnection, dbCursor):
+    """SQLite connection class"""
+
+    def __init__(self, dbFile):
         """Initialize attributes"""
-        self.dbConnection = dbConnection
-        self.dbCursor = dbCursor
+        self.dbConnection = sqlite3.connect(dbFile)
+        self.dbCursor = self.dbConnection.cursor()
+
+
+    def closeConnection(self):
+        self.dbConnection.close()
+
 
     def addQuery(self, querySQL, author, sm3version):
         """Write query object to 'queries' table"""
@@ -34,7 +41,3 @@ class SqliteQuery():
         self.dbCursor.execute(sql, parameters)
 
         return self.dbCursor.fetchall()
-
-
-    def build(self):
-        pass
