@@ -1,12 +1,12 @@
 from dbconnection import DBConnection
 from dbconnections import DBConnections
+from query import Query
+from excel import Excel
 #from pypika import Query, Table, Field
 
 import sqlite3
 
 dbFile = "/home/mike/projects/python/sm3dbrowser/sm3dbrowser.sqlite"
-
-#test
 
 
 #q = Query.from_('connectioninfo').select('Name','HostName','Port','SID','Username','Password','VPN','Description')
@@ -14,8 +14,8 @@ dbFile = "/home/mike/projects/python/sm3dbrowser/sm3dbrowser.sqlite"
 
 
 
-#with sqlite3.connect(dbFile) as dbConn:
-#	cursor = dbConn.cursor()
+with sqlite3.connect(dbFile) as dbConn:
+	cursor = dbConn.cursor()
 
 
 #create test database connection
@@ -25,3 +25,17 @@ dbFile = "/home/mike/projects/python/sm3dbrowser/sm3dbrowser.sqlite"
 #retrieve list of all connections
 #c = DBConnections()
 #c.loadConnections(cursor)
+
+#create test query
+q = Query(dbConn, cursor)
+#q.addQuery('select count(*) from queries', 'Mike', 3.4)
+results = q.searchQuery('queries')
+
+xl = Excel('test.xlsx', 'first worksheet')
+xl.addWorksheet('Parameters')
+
+#data = [['a','b','c'], [1,2,3]]
+
+xl.writeRows('first worksheet', 1, 1, results)
+
+xl.writeFile()
