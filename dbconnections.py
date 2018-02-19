@@ -8,6 +8,4 @@ class DBConnections():
 	def loadConnections(self, dbCursor):
 		"""Retrieve list of all records in 'connectioninfo' table"""
 		dbCursor.execute('SELECT * FROM connectioninfo')
-		self.connections=dbCursor.fetchall()
-		for connection in self.connections:
-			print(connection)
+		return dbCursor.fetchall()

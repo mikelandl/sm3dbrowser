@@ -28,16 +28,6 @@ class SqliteConnection():
     def getQuery(self):
         pass
 
-    def executeQuery(self):
-        pass
-
-    def searchQuery(self, searchString):
-        """Find all queries that contain 'searchString'"""
-
-        parameters = ('%'+searchString+'%',)
-
-        sql = "SELECT * FROM queries WHERE QuerySQL LIKE ?"
-
-        self.dbCursor.execute(sql, parameters)
-
+    def executeQuery(self, query, parameters):
+        self.dbCursor.execute(query, parameters)
         return self.dbCursor.fetchall()

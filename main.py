@@ -1,7 +1,6 @@
 from dbconnection import DBConnection
 from dbconnections import DBConnections
 from sqliteconnection import SqliteConnection
-from query import Query
 from excel import Excel
 #from pypika import Query, Table, Field
 
@@ -20,16 +19,15 @@ from excel import Excel
 #q = SqliteQuery(dbConn, cursor)
 #q.addQuery('select count(*) from queries', 'Mike', 3.4)
 #results = q.searchQuery('queries')
-#xl = Excel('test.xlsx', 'first worksheet')
-#xl.addWorksheet('Parameters')
-#xl.writeRows('first worksheet', 1, 1, results)
-#xl.writeFile()
 
 
-config = SqliteConnection("/home/mike/projects/python/sm3dbrowser/sm3dbrowser.sqlite")
+configDB = SqliteConnection("/home/mike/projects/python/sm3dbrowser/sm3dbrowser.sqlite")
 
-results = config.searchQuery('queries')
-config.closeConnection()
+#results = configDB.searchQuery('queries')
+results = configDB.executeQuery("SELECT * FROM connectioninfo",())
+#parameters = ('%'+'con'+'%',)
+#results = configDB.executeQuery("SELECT * FROM connectioninfo WHERE Name LIKE ?",parameters)
+configDB.closeConnection()
 
 xl = Excel('test.xlsx', 'first worksheet')
 xl.addWorksheet('Parameters')
