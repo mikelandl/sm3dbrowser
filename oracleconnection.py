@@ -17,7 +17,10 @@ class OracleConnection():
 
 
     def closeConnection(self):
+        self.dbCursor.close()
         self.dbConnection.close()
 
-    def executeQuery(self):
-        pass
+    def executeQuery(self, query, parameters):
+        self.dbCursor.prepare(query)
+        self.dbCursor.execute(None, parameters)
+        return self.dbCursor.fetchall()
