@@ -6,6 +6,8 @@ import sqlite3
 
 dbFile = "/home/mike/projects/python/sm3dbrowser/sm3dbrowser.sqlite"
 
+#test
+
 
 #q = Query.from_('connectioninfo').select('Name','HostName','Port','SID','Username','Password','VPN','Description')
 #print(str(q))
